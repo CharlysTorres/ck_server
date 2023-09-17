@@ -1,4 +1,6 @@
-import { doRequest } from "../system/doRequest";
+import { doRequest } from '../system/doRequest';
+import { IBattleLog, } from '../@types/brawlStars/battleLog';
+import { IPlayerBrawlStars, } from '../@types/brawlStars/brawlStarsPlayer';
 
 const apiUrl = process.env.URL_BRAWL_STARS;
 
@@ -21,7 +23,7 @@ function fetchPlayer(userTagId: string) {
   return apiUrl + 'players' + '/' + '%23' + userTagId;
 }
 
-export async function brawlStarsBattleLog(userTagId: string) {
+export async function brawlStarsBattleLog(userTagId: string): Promise<IBattleLog> {
   return new Promise((resolve, reject) => {
     doRequest(fetchBattleLog(userTagId), 'GET', headers).then(brawlData => {
       resolve(brawlData);
@@ -31,7 +33,7 @@ export async function brawlStarsBattleLog(userTagId: string) {
   });
 }
 
-export async function brawlStarsPlayer(userTagId: string) {
+export async function brawlStarsPlayer(userTagId: string): Promise<IPlayerBrawlStars> {
   return new Promise((resolve, reject) => {
     doRequest(fetchPlayer(userTagId), 'GET', headers).then(playerData => {
       resolve(playerData);

@@ -4,6 +4,7 @@ import BrawStarsControllers from './controllers/BrawStarsControllers';
 import ClashRoyaleControllers from './controllers/ClashRoyaleController';
 import PaladinsControllers from './controllers/PaladinsController';
 import UserController from './controllers/UserController';
+import FortniteController from './controllers/FortniteController';
 
 const routes = Router();
 
@@ -26,5 +27,8 @@ routes.get('/clashroyale/player', ClashRoyaleControllers.player);
 
 // Paladins
 routes.get('/paladins/player', PaladinsControllers.getPlayer);
+
+// Fortnite
+routes.get('/fortnite/stats', FortniteController.getStatus);
 
 export default routes;
